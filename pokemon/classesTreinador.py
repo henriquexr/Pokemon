@@ -1,24 +1,25 @@
 import random
 import classesPokemon
+import batalha
 
 #lista q declara os 3 pokemons iniciais
 pokemonsIniciais = [
-    classesPokemon.Grama("Chikorita","Grama",10,2,2),
-    classesPokemon.Fogo("Cyndaquil","Fogo",10,2,2),
-    classesPokemon.Agua("Totodile","Agua",10,2,2)
+    classesPokemon.Grama("Chikorita","Grama",10),
+    classesPokemon.Fogo("Cyndaquil","Fogo",10),
+    classesPokemon.Agua("Totodile","Agua",10)
 ]
 #lista que declara os pokemons selvagens
 pokemonSelvagen = [
     
-    classesPokemon.Agua("Psyduck","Agua",10,2,2),
-    classesPokemon.Agua("Squirtle","Agua",10,2,2),
-    classesPokemon.Agua("Poliwag","Agua",10,2,2),
-    classesPokemon.Fogo("Charmander","Fogo",10,2,2),
-    classesPokemon.Fogo("Charmander","Fogo",10,2,2),
-    classesPokemon.Fogo("Charmander","Fogo",10,2,2),
-    classesPokemon.Grama("Bulbasaurs","Grama",10,2,2),
-    classesPokemon.Grama("Turtwig","Grama",10,2,2),
-    classesPokemon.Grama("Odish","Grama",10,2,2)
+    classesPokemon.Agua("Psyduck","Agua",10),
+    classesPokemon.Agua("Squirtle","Agua",10),
+    classesPokemon.Agua("Poliwag","Agua",10),
+    classesPokemon.Fogo("Charmander","Fogo",10),
+    classesPokemon.Fogo("Charmander","Fogo",10),
+    classesPokemon.Fogo("Charmander","Fogo",10),
+    classesPokemon.Grama("Bulbasaurs","Grama",10),
+    classesPokemon.Grama("Turtwig","Grama",10),
+    classesPokemon.Grama("Odish","Grama",10)
 
 ]
 
@@ -27,7 +28,7 @@ class Treinador():
         self._nome = nome
         self._pokemons = pokemons
 
-    def escolherPokemons(self):
+    def escolherPokemon(self):
         return random.choices(self._pokemons)
         
 class Jogador(Treinador):
@@ -55,23 +56,15 @@ class Jogador(Treinador):
 class Rival(Treinador):
     def __init__(self, nome, pokemons):
         super().__init__(nome, pokemons)
-
-#BATALHA UQE É PRA SER DESENVOLVIDA
-def batalha(jogador,rival):
-    p1 = jogador.escolherPokemon()
-    p2 = rival.escolherPokemon()
-
-    p1Forca = (p1._ataque)* random.randint(1,3)
-    p2Forca = (p2._ataque)* random.randint(1,3)
-
-    if (p1Forca > p2Forca):
-        
-    elif (p1Forca < p2Forca):
-        print(f"O vencedor foi {p2._nome} com força {p2Forca} do treinador {rival._especie}")
-    else:
-        print("Deu empate")
+        self._nome = "Jaen"
+    def pokemonRival(self):
+        pokemon = random.choice(pokemonsIniciais)
+        print(f"{self._nome}, escolheu {pokemon._especie}")
+        return pokemon
 
 
+
+    
 
 #Inicio do jog
 print('''Olá, seja bem vindx ao paraiso pokemon! esses mundo é repleto de criaturas fantasticas e especiais para ficar mais por dentro desse mundo me fale seu nome!''')
@@ -125,7 +118,7 @@ while True:
                 jogador.capturarPokemons(pokemon)
         case "3":
             
-            batalha(jogador,rival)
+            batalha.batalha(jogador,rival)
 
         case "4":
             break
